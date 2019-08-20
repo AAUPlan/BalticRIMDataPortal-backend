@@ -36,7 +36,7 @@ router.post("/register", async (req, res) => {
         name: req.body.name,
         username: req.body.username,
         hashedpassword: passwordsecrets.hash,
-        salt: passwordsecrets.salt
+        salt: passwordsecrets.salt,
       };
 
       try {
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 
   const userDetails = {
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
   };
 
   try {
@@ -86,8 +86,8 @@ router.post("/login", async (req, res) => {
         .send({
           msg: "Successfully logged in",
           status: loggedIn,
-          token: token,
-          code: 200
+          username: loginAttempt.username,
+          code: 200,
         })
         .end();
     } else {
@@ -95,7 +95,7 @@ router.post("/login", async (req, res) => {
         .status(400)
         .send({
           msg: "Could not log in: Email or password are incorrect",
-          status: loggedIn
+          status: loggedIn,
         })
         .end();
     }

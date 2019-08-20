@@ -1,26 +1,48 @@
 const router = require("express").Router();
+var cloneDeep = require("lodash.clonedeep");
+
+const { queries } = require("../database/queries");
 const verify = require("./verifyToken");
 const content = require("../content/content.json");
 
-router.post("/content", (req, messageToFrontEnd) => {
-    const filteredContent = filterContent(content.data)
-    messageToFrontEnd.send(filteredContent).end();
-});
+//MIDDLEWARE
+const clean = async function(req, res, next) {
+  let cloned = cloneDeep(content.data); //deep clone needed for sending filtered versions to user without full access
+
+  //req.user is only defined if the token verification worked.
+  if (req.user) {
+    var userValidated = await queries.readUser(req.user._id); //Using the email to read user from Database and check if permissions is given to read secret data
+  }
+
+  if (userValidated && userValidated.fullAccess) {
+    return res.send(content.data).end();
+  } else {
+    const filteredContent = filterContent(cloned); //if user not verified
+    return res.send(filteredContent).end();
+  }
+};
+router.post("/content", verify, clean, (req, res) => {});
 
 module.exports = router;
 
+function filterContent(content) {
+  const filtered = [];
 
-function filterContent (content) {
-    let tester = content.map(topSite => {
-       const layers = []       
-       if (topSite.sites[0].data) {
-           layers.push(topSite.sites[0].data.filter(layer => layer.public))};
-       
-       topSite.sites[0].data = layers[0];
-    })
+  content.map(site => {
+    filtered.push(getDataLayers(site));
+  });
 
-    console.log (tester);
+  return filtered;
+}
 
-   return {};
-    
-};
+function getDataLayers(obj) {
+  if (obj.hasOwnProperty("sites")) {
+    obj.sites.map(site => {
+      getDataLayers(site);
+    });
+  }
+  if (obj.hasOwnProperty("data")) {
+    obj["data"] = obj.data.filter(layer => layer.public);
+  }
+  return obj;
+}
