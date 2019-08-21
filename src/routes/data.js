@@ -5,7 +5,7 @@ const { queries } = require("../database/queries");
 const verify = require("./verifyToken");
 const content = require("../content/content.json");
 
-//MIDDLEWARE
+//MIDDLEWARE Hello marina
 const clean = async function(req, res, next) {
   let cloned = cloneDeep(content.data); //deep clone needed for sending filtered versions to user without full access
 
