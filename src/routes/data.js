@@ -11,13 +11,15 @@ const clean = async function(req, res, next) {
 
   //req.user is only defined if the token verification worked.
   if (req.user) {
-    var userValidated = await queries.readUser(req.user._id); //Using the email to read user from Database and check if permissions is given to read secret data
+    var userValidated = await queries.readUser(req.user._id);
+    //Using the email to read user from Database and check if permissions is given to read secret data
   }
 
-  if (userValidated && userValidated.fullAccess) {
+  if (userValidated && userValidated.fullaccess) {
     return res.send(content.data).end();
   } else {
     const filteredContent = filterContent(cloned); //if user not verified
+    res.status(200);
     return res.send(filteredContent).end();
   }
 };

@@ -81,11 +81,12 @@ router.post("/login", async (req, res) => {
         process.env.TOKEN_SECRET
       );
       return res
-        .header("auth-token", token)
+        .header()
         .status(200)
         .send({
           msg: "Successfully logged in",
           status: loggedIn,
+          "auth-token": token,
           username: loginAttempt.username,
           code: 200,
         })
