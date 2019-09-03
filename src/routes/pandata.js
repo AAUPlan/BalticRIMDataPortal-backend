@@ -3,7 +3,7 @@ var cloneDeep = require("lodash.clonedeep");
 
 const { queries } = require("../database/queries");
 const verify = require("./verifyToken");
-const content = require("../content/content.json");
+const content = require("../pancontent/pancontent.json");
 
 //MIDDLEWARE Hello marina
 const clean = async function(req, res, next) {
@@ -23,7 +23,7 @@ const clean = async function(req, res, next) {
     return res.send(filteredContent).end();
   }
 };
-router.post("/content", verify, clean, (req, res) => {});
+router.post("/pancontent", verify, clean, (req, res) => {});
 
 module.exports = router;
 

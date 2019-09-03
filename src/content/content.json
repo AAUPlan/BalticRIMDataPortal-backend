@@ -3,61 +3,77 @@
     {
         "name": "German case",
         "sites": [
-          { "name": "Schleswig-Holstein’s maritime cultural heritage", "data": [{"name": "hej", "public":true, "url": "https://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typename=AAU_Setup%3Aculturalheritage&maxFeatures=50000&outputFormat=application%2Fjson&srsname=EPSG:3857"}] }
+          { "name": "Schleswig-Holstein’s maritime cultural heritage", "data": [] }
         ]
       },
       {
         "name": "Danish-German case",
-        "sites": [{ "name": "Flensburg Fjord", "data": [{"name": "hej"}] }]
+        "sites": [{ "name": "Flensburg Fjord", "data": [{"name": "Flensburg Fjord Case Area", "public":true, "layer":"AAU_Setup:Danish_GermanCase", "url": "http://94.231.110.64:8080/geoserver/AAU_Setup/wms", "durl": "", "dname": "Flensburg_Fjord_Case_Area"}] }]
       },
       {
         "name": "Danish case",
         "sites": [
-          { "name": "The Oeresund", "data": [{"name": "hej", "public":false, "url": "https://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typename=AAU_Setup%3Aculturalheritage&maxFeatures=50000&outputFormat=application%2Fjson&srsname=EPSG:3857"},
-                {"name": "hej2", "public":true, "url": "https://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typename=AAU_Setup%3Aculturalheritage&maxFeatures=50000&outputFormat=application%2Fjson&srsname=EPSG:3857"}] },
-          { "name": "The Bay of Koege", "data": [{"name": "hej"}] }
+          { "name": "The Oeresund", "data": [{"name": "Shipwrecks", "layer": "AAU_Setup:culturalheritage", "public":false, "url": "http://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typename=AAU_Setup%3Aculturalheritage&maxFeatures=50000&outputFormat=application%2Fjson&srsname=EPSG:3857", "durl":"http://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=AAU_Setup%3Aculturalheritage&maxFeatures=50&outputFormat=SHAPE-ZIP", "dname": "Shipwrecks"},
+                                              {"name": "Ships","layer": "AAU_Setup:culturalheritage", "public":true, "url": "http://94.231.110.64:8080/geoserver/AAU_Setup/ows?service=WFS&version=1.0.0&request=GetFeature&typename=AAU_Setup%3Aculturalheritage&maxFeatures=50000&outputFormat=application%2Fjson&srsname=EPSG:3857", "durl":"", "dname": "Shipwrecks"}] },
+          { "name": "The Bay of Koege", "data": [] }
         ]
       },
       {
         "name": "Polish case",
         "sites": [
-          { "name": "Puck Lagoon ", "data": [{"name": "hej"}] },
-          { "name": "Gulf of Gdansk", "data": [{"name": "hej"}] }
+          { "name": "Puck Lagoon ", "data": [] },
+          { "name": "Gulf of Gdansk", "data": [] }
         ]
       },
-      { "name": "Lithuanian case", "sites": [{ "name": "Relict forest", "data": [{"name": "hej"}] }] },
+      { "name": "Lithuanian case", "sites": [{ "name": "Relict forest", "data": [{"name": "Wrecks", "public":true, "layer":"AAU_Setup:LithuanianShipWrecks", "url":"http://94.231.110.64:8080/geoserver/AAU_Setup/wms/kml?layers=AAU_Setup:LithuanianShipWrecks", "durl":"", "dname": "Polish_Shipwrecks"}] }] },
       {
         "name": "Russian case",
         "sites": [
           {
             "name": "South-Eastern Baltic ",
             "sites": [
-              { "name": "Pilot area 1", "data": [{"name": "hej"}] },
-              { "name": "Pilot area 2", "data": [{"name": "hej"}] },
-              { "name": "Pilot area 3", "data": [{"name": "hej"}] }
+              { "name": "Pilot area 1", "data": [] },
+              { "name": "Pilot area 2", "data": [] },
+              { "name": "Pilot area 3", "data": [] }
             ]
           },
           {
             "name": "Gulf of Finland",
             "sites": [
-              { "name": "Pilot area 1", "data": [{"name": "hej"}] },
-              { "name": "Pilot area 2", "data": [{"name": "hej"}] }
+              { "name": "Pilot area 1", "data": [] },
+              { "name": "Pilot area 2", "data": [] }
             ]
           }
         ]
       },
       {
         "name": "Finnish-Estonian case",
-        "sites": [{ "name": "Gulf of Finland", "data": [{"name": "hej"}] }]
+        "sites": [{ "name": "Gulf of Finland", "data": [] }]
       },
       {
         "name": "Finnish case",
         "sites": [
-          { "name": "Gulf of Finland", "data": [{"name": "hej"}] },
-          { "name": "Gulf of Bothnia", "data": [{"name": "hej"}] }
+          { "name": "Gulf of Finland", "data": [] },
+          { "name": "Gulf of Bothnia", "data": [] }
         ]
       }
-      ]
+      ],
+      "panbalticdata":  [
+        {
+            "name": "Panbaltic Layers",
+            "sites": [
+              { "name": "Schleswig-Holstein’s maritime cultural heritage", "data": [] }
+            ]
+          },
+          {
+            "name": "National Data",
+            "sites": [
+              { "name": "Germany", "data": [{"name": "Wrecks-dots", "public":true, "layer":"", "url": "http://94.231.110.64:8080/geoserver/AAU_Setup/wms", "durl": "lala", "dname": "wrecks_dots_germany"},
+                                            {"name": "Wrecks-density", "public":true, "layer":"", "url": "http://94.231.110.64:8080/geoserver/AAU_Setup/wms", "durl": "lala", "dname": "wrecks_dots_germany"}] }
+            ]
+          }
+        ]
       
-     
 }
+
+
