@@ -3,7 +3,7 @@ var cloneDeep = require("lodash.clonedeep");
 
 const { queries } = require("../database/queries");
 const verify = require("./verifyToken");
-const content = require("../pancontent/pancontent.json");
+const content = require("../content/pancontent.json");
 
 //MIDDLEWARE Hello marina
 const clean = async function(req, res, next) {
